@@ -2,3 +2,11 @@
   background-color: #f3f3f3;
   padding: 10px;
 }
+
+a.sidebarMenu:hover {
+  background: linear-gradient(45deg, #242ac1, #03a9f4) !important;
+  color: white !important;
+}
+a.sidebarMenu:hover svg {
+  stroke: white !important;
+}

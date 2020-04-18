@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { Colors } from "../design/colors";
 import * as Icon from "react-feather";
-import { fireApp } from "../actions/authentication";
-import Axios from "axios";
+import { registerProcess, fireApp } from "../actions/authentication";
+
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 const panel_width = 570;
 const right_width = 340;
 
-export default class Authentication extends Component {
+class Authentication extends Component {
   constructor(props) {
     super(props);
 
@@ -19,6 +21,8 @@ export default class Authentication extends Component {
 
   render() {
     const { route, message } = this.state;
+    const onLogin = route === "login";
+    const onRegister = route === "register";
     const styles = {
       wrapper: {
         display: "flex",
@@ -144,12 +148,11 @@ export default class Authentication extends Component {
     return (
       <div style={styles.wrapper}>
         <div style={styles.left}>
-          <div style={styles.logo}>
-            {/* <img alt="" src="/assets/logo.png" style={{ height: 220 }} /> */}
+          <Link style={styles.logo} to="/">
             logo
-          </div>
+          </Link>
           <div style={styles.options}>
-            {route === "login" && (
+            {onLogin && (
               <span
                 style={styles.option}
                 onClick={() => this.setState({ route: "register" })}
@@ -157,7 +160,7 @@ export default class Authentication extends Component {
                 Register screen
               </span>
             )}
-            {route === "register" && (
+            {onRegister && (
               <span
                 style={styles.option}
                 onClick={() => this.setState({ route: "login" })}
@@ -172,11 +175,7 @@ export default class Authentication extends Component {
         <div style={styles.right}>
           <div style={styles.titling}>
             <div style={styles.title}>
-              {route === "register"
-                ? "Create a new account"
-                : route === "login"
-                ? "Login"
-                : null}
+              {onRegister ? "Create a new account" : onLogin ? "Login" : null}
             </div>
             <div style={styles.message}>{message}</div>
           </div>
@@ -202,7 +201,7 @@ export default class Authentication extends Component {
                 onChange={(e) => this.setState({ password: e.target.value })}
               />
             </div>
-            {route === "register" && (
+            {onRegister && (
               <div style={styles.inputed}>
                 <span style={styles.icon}>
                   <Icon.Lock color="#a2a2a2" size={20} />
@@ -234,25 +233,7 @@ export default class Authentication extends Component {
       if (!this.state.password) {
         return this.setState({ message: "please input password" });
       }
-      fireApp
-        .auth()
-        .createUserWithEmailAndPassword(this.state.email, this.state.password)
-        .then(({ user }) =>
-          Axios.post("/users/add", {
-            email: user.email,
-            password: this.state.password,
-            fireID: user.uid,
-          })
-            .then((res) => {
-              if (res.data.success) {
-                console.log("success ! ", res.data.data);
-              } else {
-                console.log("error a lqlaoui");
-              }
-            })
-            .catch((err) => console.log(err))
-        )
-        .catch((err) => console.log(err));
+      this.props.registerProcess(this.state.email, this.state.password);
     }
     if (this.state.route === "login") {
       if (!this.state.email) {
@@ -263,12 +244,9 @@ export default class Authentication extends Component {
       }
       fireApp
         .auth()
-        .signInWithEmailAndPassword(this.state.email, this.state.password)
-        .then(
-          ({ user }) => console.log("logged")
-          // submit without type to mongo
-        )
-        .catch((err) => console.log(err));
+        .signInWithEmailAndPassword(this.state.email, this.state.password);
     }
   };
 }
+const mapStateToProps = (state) => ({});
+export default connect(mapStateToProps, { registerProcess })(Authentication);

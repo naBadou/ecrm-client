@@ -1,37 +1,35 @@
 import React, { Component } from "react";
-import Axios from "axios";
+
 import { upgradeUserType } from "../actions/authentication";
 import { connect } from "react-redux";
 
 class TypePicker extends Component {
   render() {
     return (
-      <div>
+      <form>
         Pick a Type
         <br />
         <br />
         <br />
         <br />
-        <button
-          onClick={() =>
-            this.props.upgradeUserType("manager", this.props.fireID)
-          }
-        >
-          MANAGER
-        </button>
+        <button onClick={(e) => this.makeType(e, "manager")}>MANAGER</button>
         <br />
         <br />
-        <button
-          onClick={() =>
-            this.props.upgradeUserType("transporter", this.props.fireID)
-          }
-        >
+        <button onClick={(e) => this.makeType(e, "transporter")}>
           TRANSPORTER
         </button>
-      </div>
+      </form>
     );
   }
+
+  makeType = (e, type) => {
+    e.preventDefault();
+    console.log("uid just befor picking type", this.props.account.uid);
+    this.props.upgradeUserType(type, this.props.account.uid);
+  };
 }
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  account: state.auth.account,
+});
 
 export default connect(mapStateToProps, { upgradeUserType })(TypePicker);

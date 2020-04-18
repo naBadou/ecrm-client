@@ -1,16 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
-import App from "./App";
+// import App from "./App";
+import Router from "./router";
+// import Application from "./Application";
 
 // Design dep
 import "./design/index.css";
+import "./design/App.css";
 
 // Redux dep
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore, compose } from "redux";
 import thunk from "redux-thunk";
-import Reducers from "./reducers";
+import Reducers from "./reducers/_index.js";
 import { BrowserRouter } from "react-router-dom";
 
 const initalState = {};
@@ -30,7 +33,9 @@ ReactDOM.render(
   <Provider store={Storage}>
     <React.StrictMode>
       <BrowserRouter>
-        <App />
+        {/* <App /> */}
+        {/* <Application /> */}
+        <Router />
       </BrowserRouter>
     </React.StrictMode>
   </Provider>,
