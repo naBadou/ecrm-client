@@ -6,26 +6,6 @@ export const __ORDERS = [
     product: 10,
     customer: 20,
     amount: 159,
-    logs: [
-      {
-        responsible: "manager",
-        status: "awaiting-assignement",
-        date: "xxxxx",
-        notes: "",
-      },
-      {
-        responsible: "manager",
-        status: "assigned",
-        date: "xxxxx",
-        notes: "pretify",
-      },
-      {
-        responsible: "transporter",
-        status: "to deliver",
-        date: "xxxxx",
-        notes: "",
-      },
-    ],
     status: "awaiting-assignement", // default
   },
 ];

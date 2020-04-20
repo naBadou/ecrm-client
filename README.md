@@ -1,68 +1,97 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+const Team = {
+  teamID: 0,
+  manager: 900,
+  transporters: [
+    {
+      id: 100,
+      on: true/false
+    }
+  ],
+  orders:[
+    {
+      id: 0,
+      current: null,
+      product: 0,
+      customer: 0,
+      responsible: 100,
+      posted: dateObject,
+      assigned : dateObject,
+      delivered : dateObject,
+      canceled: {
+        by: 'customer/manager/transporter',
+        dateObject 
+      }
+    }
+  ],
+  inventory:[
+    {
+      productID:0,
+      name: 'Fly box',
+      images:[],
+      price: 578,
+      sold: 0+1 for every delivered
+    }
+  ],
+  customers:
+}
 
-## Available Scripts
+_How it works_
 
-In the project directory, you can run:
+0 - ADMIN
 
-### `yarn start`
+admins get logs about registration/login of users
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1 - REGISTRATION 
 
-### `yarn test`
+🧮 Logic 
+user submit  fullname + phone + password + type to firebase.users and to mongo.type
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+interfaces, api, redux
 
-### `yarn build`
+2 - LIGIN
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+🧮 Logic
+Firebase listener checks for stored/submited credentials then fetchs user from mongo
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+3 - FIRST VISITE 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+first of all, your real name will appear only for teammates, choose a user name that is displayed on the platform.
 
-### `yarn eject`
+choose an account type : manager/transporter
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+if manager :
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- in order to use the platform you must create a team, now give it a name, and avatar. you can change them whenever you want
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- do you wanna add people to team ? (optional), input username + type
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Accept Privacy policy.
 
-## Learn More
+if Transporter :
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- do you have a team to join ?
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+4 - TEAMING UP
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+3aks a transporter, a manager is dedicated to one team, focusin on its multiple membres and its overload is the main purpose,
+for a transporter, having multiple teams is making his process easier and also reducing its carburent and time costs.
 
-### Analyzing the Bundle Size
+🧮 Logic
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+The manager creates a team give it an icon and name.
+-- he can be own his own.
+- Transporter can have multiple teams, manager have only one.
+- Teams are public, everyone can see name of team and staff number, also activity.
+- manager can recruit members.
+- members will chat before joining
 
-### Making a Progressive Web App
+🎯 Marketing 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- Ranking teams will motivate the audience
+- Puting objectifs to realise as a team
+- fake it you make it 
+- limiting team members for simple users
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+5 - 
