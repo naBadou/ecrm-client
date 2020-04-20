@@ -28,7 +28,8 @@ export class App extends Component {
       return <div> u should pick a type a tebi</div>;
     }
     if (isVisitor) {
-      return <PublicPages />;
+      return <ManagerRouter />;
+      // return <PublicPages />;
     }
     if (loading) {
       return <div> LOADING </div>;

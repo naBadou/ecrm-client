@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap");
+@import url("/assets/Muli-VariableFont_wght.ttf");
 * {
   margin: 0;
   padding: 0;
@@ -6,9 +6,9 @@
 }
 #root {
   background-color: #f5f7fb;
-  color: #626369;
+  color: #394748;
   display: flex;
-  font-family: "Maven Pro", sans-serif;
+  font-family: "Muli Regular", sans-serif;
   font-size: 15px;
   /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -24,10 +24,19 @@ button {
   width: -webkit-fill-available;
   padding: 5px;
   font: inherit;
-  background-color: inherit;
-  color: inherit;
-  padding: 10px;
-  border-radius: 100px;
+}
+button,
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #455af7, #f48024);
+  color: white;
+  font-size: 14px;
+  height: 30px;
+  padding: 0px 15px;
+  border-radius: 48px;
+  margin: 5px;
 }
 ::-webkit-input-placeholder {
   font: inherit;
@@ -38,46 +47,259 @@ a {
   font: inherit;
 }
 
-.def-color {
-  color: #9da5b3;
-  cursor: pointer;
-}
-.def-color:hover {
-  color: #242ac1;
-}
-.def-bg {
-  background-color: #f5f6fa;
-  color: #9da5b3;
-  cursor: pointer;
-}
-.def-bg:hover {
-  background: linear-gradient(45deg, #242ac1, #03a9f4) !important;
-  color: white !important;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-h1 {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  font-weight: 300;
-  font-size: 3rem;
+/******************/
+.sidebar-desktop {
+  display: none;
 }
-h2 {
-  font-size: 1.5rem;
-  font-weight: 300;
+.sidebar-desktop-logo {
+  display: none;
 }
-
-/* h1:after {
-  position: absolute;
-  content: attr(data-title);
+.sidebar-mobile {
+  display: flex;
+  height: 60vh;
+  background: #394748;
+  width: 100%;
+}
+.body-and-header {
+  width: -webkit-fill-available;
+}
+.header {
+  justify-content: space-between;
+  background: white;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0px 7px #6c749c2b;
+  position: fixed;
+  right: 0;
   left: 0;
   top: 0;
-  width: 200px;
-  height: 1.25rem;
-  background-color: blue;
+}
+.body {
+  margin-top: 60px;
+  padding: 20px;
+  min-height: calc(100vh - 60px + 500ch);
+}
+.body-container {
+}
+.header-container {
+  justify-content: space-between;
+  background: white;
+  display: flex;
+  align-items: center;
+  width: -webkit-fill-available;
+  margin: 0 20px;
+}
+.header-username {
+  display: none;
+}
+.header-logo {
+  display: flex;
+  font-size: 24px;
+  font-family: Muli ExtraBold;
+}
+.header-avatar {
+  display: flex;
+  background-color: #9da5b3;
+  height: 35px;
+  width: 35px;
+  border-radius: 100px;
+}
+.header-buttons {
+  display: none;
+}
+
+.menu {
+  display: flex;
+  flex: 2;
+  width: -webkit-fill-available;
+  min-width: 120px;
+  font-size: 17px;
+  color: #adb2bb;
+  font-family: Muli;
+  padding: 10px 0;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.menu:before {
+  display: flex;
+  flex: 1;
+  margin-right: 10px;
+  position: relative;
+  top: 12px;
+  width: -webkit-fill-available;
+  content: "";
+}
+.menu.active {
+  color: #f48024;
+}
+
+.menu.active:before {
+  border-top: 0.5px solid #f48024;
+}
+.menu:hover:before {
+  border-top: 0.5px solid white;
+}
+.menu:hover {
   color: white;
-} */
+}
+/*****************/
+@media only screen and (min-width: 600px) {
+  .header {
+  }
+}
+@media only screen and (min-width: 960px) {
+  .sidebar-mobile {
+    display: none;
+  }
+  .header-menu-icon {
+    display: none;
+  }
+  .sidebar-desktop {
+    display: flex;
+    position: fixed;
+    height: 100vh;
+    background: #394748;
+    width: 280px;
+    flex-direction: column;
+    padding: 30px;
+  }
+  .sidebar-desktop-logo {
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    height: 100px;
+    display: flex;
+    font-size: 25px;
+    margin-bottom: 80px;
+    font-family: Muli ExtraBold;
+  }
+  .body-and-header {
+    margin-inline-start: 280px;
+  }
+  .header {
+    height: 60px;
+  }
+  .body {
+    min-height: calc(100vh - 60px);
+  }
+  .header-container {
+  }
+  .header-meta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .header-avatar {
+    height: 45px;
+    width: 45px;
+  }
+  .header-username {
+    display: flex;
+    padding-left: 15px;
+    color: #394748;
+    font-family: "Muli Regular", sans-serif;
+  }
+
+  .header-logo {
+    display: none;
+  }
+  .header-buttons {
+    display: flex;
+  }
+}
+
+/***************************************************/
+.bg-delivered {
+  background-color: #8bc34a;
+}
+.bg-awaiting {
+  background-color: #ffc107;
+}
+.bg-canceled {
+  background-color: #f44336;
+}
+
+/**  to hide on desktop
+
+.bottomBar 
+.hamburgerMenu
+.userMenu
+
+*/
+.pageContainer {
+  background-color: #f5f7fb;
+  height: calc(100vh - 60px);
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-bottom: 60px;
+}
+
+.bottomBar {
+  display: block;
+  position: fixed;
+  height: 60px;
+  background: #2f2e41;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+}
+.bottomBar-container {
+  display: flex;
+  flex-direction: row;
+  height: -webkit-fill-available;
+}
+.bottomBarHamburger,
+.bottomBarUser {
+  color: #fff;
+  min-height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottomBarHamburger.active,
+.bottomBarUser.active {
+  background-color: #f48024;
+  color: white;
+}
+.bottomBarItem {
+  flex: 1;
+  color: #fff;
+  min-height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottomBarItem.active {
+  color: #f48024;
+}
+
+.hamburgerMenu {
+  position: absolute;
+  background: #3a3a3a;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.userMenu {
+  position: absolute;
+  background: #3a3a3a;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  top: 0;
+}

@@ -1,0 +1,17 @@
+.chat {
+  display: flex;
+  height: -webkit-fill-available;
+}
+.chatLeft {
+  overflow: auto;
+  width: 300px;
+  background: #fbfbfc;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+}
+.chatRight {
+  flex: 1;
+  background: white;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+}

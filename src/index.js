@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
-// import App from "./App";
 import Router from "./router";
-// import Application from "./Application";
 
 // Design dep
 import "./design/index.css";
 import "./design/App.css";
+import "./design/Typography.css";
 
 // Redux dep
 import { Provider } from "react-redux";
@@ -24,8 +23,8 @@ const Storage = createStore(
   Reducers,
   initalState,
   compose(
-    applyMiddleware(...middlewares),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(...middlewares)
+    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 

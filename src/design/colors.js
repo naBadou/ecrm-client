@@ -3,8 +3,6 @@ export const Colors = {
   mana: "#5e22ff",
   disabled: "#d0d0d0",
 
-  dark: "#333",
-
   white: "#fff",
   light: "#f5f6fa",
   lightGrey: "#B9C4D5",
@@ -12,6 +10,12 @@ export const Colors = {
 
   default: "#242ac1",
   default2: "#03A9F4",
+
+  dark: "#394748",
+
+  grey03: "#F5F6FA",
+  grey02: "#FBFBFC",
+  grey01: "#FFFFFF",
 
   shadows: "0 0 3px 1px #0000000a",
 };
